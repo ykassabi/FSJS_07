@@ -1,5 +1,7 @@
 # App 's OverView 
+
 ###Perpuse of the App : grabing photos from Flickr API.
+
 ###quick overview of the structure of the app: file:
     - index: render the code to HTML page 
     - component/ 
@@ -13,6 +15,7 @@
         - config file to hold the APi key
 
 # Quick start 
+ 
 ## download the app and from your terminal curent project folder :
 ## yarn install
 ## yarn start
