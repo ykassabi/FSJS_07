@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
 class Search extends Component{
-    
-    state={value:''};
+    constructor(props){
+        super(props);
+        this.state={value:''} ;
+    }
 
     handleChange = (e) => {
         this.setState({value: e.target.value})
@@ -14,13 +16,14 @@ class Search extends Component{
         e.preventDefault()
     }
 
+
     render(){
 
         return ( 
             <form className="search-form" onSubmit={this.handleSubmit}>
-                <input type="search" name="search" placeholder="Search" required 
-                value={this.state.value}
-                onChange={this.handleChange}
+                <input type="search" name="search" placeholder={'Search'} required 
+                    value={this.state.value}
+                    onChange={this.handleChange}
                  />
                 
                 <button type="submit" className="search-button">

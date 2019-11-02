@@ -1,10 +1,12 @@
 import React from 'react';
 import GalleryItem from './GalleryItem';
-import noMatch from './NoMatch';
+import NoMatch from './NoMatch';
 
-const Gallery = ({data} ) => {
+const Gallery = ({photos, query}) => {
+    // let name = match.params.name;
+    // console.log(name)
    
-    const photos = data.map((item, index) => {
+    const photoslist = photos.map((item, index) => {
         return <GalleryItem 
         photoSrc = {`https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg`}
         photoAlt = {`${item.title}`}
@@ -14,9 +16,9 @@ const Gallery = ({data} ) => {
    
     return ( 
     <div className="photo-container">
-      <h2>Results</h2>
+      <h2>{query}'s Photos</h2>
       <ul>
-          { photos ?  photos  : <noMatch />}
+          { photoslist.length ? photoslist : <NoMatch /> }
       </ul>
     </div>
     );

@@ -1,16 +1,21 @@
-// import React from 'react';
-// import '../css/App.css';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+// import Gallery from './Gallery';
 
-// function Nav() {
-//     return ( 
-// <nav className="main-nav">
-//       <ul>
-//         <li><a href='#'>Cats</a></li>
-//         <li><a href='#'>Dogs</a></li>
-//         <li><a href='#'>Computers</a></li>
-//       </ul>
-//     </nav>
-//     );
-// }
+const Nav = ({searchPhotos}) => {
 
-// export default Nav;
+    return ( 
+      <nav className="main-nav">
+        <ul>
+          <li onClick={ () => searchPhotos("happy")}><NavLink to='/happy' >Happy</NavLink></li>
+          <li onClick={ () => searchPhotos("smile")}><NavLink to='/smile' >Smile</NavLink></li>
+          <li onClick={ () => searchPhotos("fly")}><NavLink to='/fly' >Fly</NavLink></li>
+
+        </ul>
+      </nav>
+    )
+
+
+}
+
+export default Nav;
