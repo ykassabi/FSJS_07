@@ -18,6 +18,12 @@
  
 ### download the app and from your terminal curent project folder :
 
+## add your Flikr API key  into src/config.js
+`export const config = {
+    Key: "...",
+    Secret: "..."
+}
+`
 ## `yarn install`
 ## `yarn start`
 ________________
