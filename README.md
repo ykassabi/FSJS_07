@@ -1,3 +1,16 @@
+###Perpuse of the App : grabing photos from Flickr API.
+###quick overview of the structure of the app: file:
+    - index: render the code to HTML page 
+    - component/ 
+        - App : the "container" component
+            - make request to api ,
+            - keeping the state of Query , and the load 
+        - SearchBar : performing the search based on the input
+        - Nav : link to favorites photo's galleries
+        - Gallery, it structure and display the photos with the help of a child component Gallery
+        - NoMatch && NotFound ; in case not photo were found or no page exists respectively. 
+        - config file to hold the APi key
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

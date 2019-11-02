@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {BrowserRouter, Route, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {config} from '../config';
 
 import Nav from './Nav';
@@ -19,7 +19,7 @@ class App extends Component {
     }; 
 
 // Responsable for fetching data from Flickr API //
-    FetchingData = (searchingWord)=> {
+    fetchingData = (searchingWord) =>{
           
           const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${config.Key}&tags=${searchingWord}&per_page=24&format=json&nojsoncallback=1`;
        
@@ -28,34 +28,50 @@ class App extends Component {
               this.setState({
                 photos: response.data.photos.photo,
                 queryText: searchingWord,
+                loading: false
               })
+              console.log(this.state.queryText)
             })
             .catch(error => {
-              console.log('>>a bobo happened with fetching or parsing. Error:', error);
-            }).finally(()=>this.setState({loading:false}))
+              console.log('>>Something went wrong while fetching or parsing. Error:', error);
+            })
     }
+
+  loadingProcess = () => {
+    this.setState({loading:true})
+  }
 
     
   // generating the  galery on the first load up // 
   componentDidMount(){
-    this.FetchingData(this.state.queryText);
-  }
-
+    this.fetchingData(this.state.queryText);
+  
+}
 
   
   render(){
-
     return (
       <BrowserRouter>
           <div className="App">
-          <SearchBar searchPhotos={this.FetchingData} />
-          <Nav searchPhotos={this.FetchingData} />
+
+          {console.log(this.state.loading)}
+          {console.log(this.state.photos)}
+          {console.log(this.state.queryText)}
+
+          <SearchBar searchPhotos={this.fetchingData} loadingProcess={this.loadingProcess} />
+          <Nav searchPhotos={this.fetchingData} />
 
           <Switch>
-            <Route exact path="/" render={ () => (this.state.loading)
+            {/* <Route exact path='/' render={()=><Redirect to='/search'/>} /> */}
+            <Route  exact path="/" render={ () => (this.state.loading)
             ? <h2>LOADING....</h2>
-            : <Gallery photos={this.state.photos} query={this.state.queryText} />} />              
-              <Route component={NotFound} />
+            : <Gallery photos={this.state.photos} query={this.state.queryText} /> } />   
+
+
+            <Route path='/fav/happy' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
+            <Route path='/fav/fly' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
+            <Route path='/fav/smile' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
+            <Route component={NotFound}/>
           </Switch>
           </div>
 

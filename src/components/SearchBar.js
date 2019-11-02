@@ -8,12 +8,19 @@ class Search extends Component{
 
     handleChange = (e) => {
         this.setState({value: e.target.value})
-        console.log('this from search component', this.state.value)
     }
 
     handleSubmit = (e) => {
-        this.props.searchPhotos(this.state.value);
         e.preventDefault()
+        this.props.searchPhotos(this.state.value);
+        this.props.loadingProcess();
+        //VVVVVVVVVVVVVVVVVVVVVVVV
+        // this is suppose to update the url with the input value,(1)
+        // let newquery = this.q.value
+        // let path = `/${newquery}`;
+        // this.props.history.push(path); // this a bug Error
+        e.currentTarget.reset();
+        //AAAAAAAAAAAAAAAAAAAAAAAAA
     }
 
 
@@ -24,6 +31,7 @@ class Search extends Component{
                 <input type="search" name="search" placeholder={'Search'} required 
                     value={this.state.value}
                     onChange={this.handleChange}
+                    // ref ={ (input) => this.q = input}//this is supose to update the url with the input value, (2)
                  />
                 
                 <button type="submit" className="search-button">
@@ -34,6 +42,7 @@ class Search extends Component{
                     <path d="M0 0h24v24H0z" fill="none" />
                     </svg>
                 </button>
+                
             </form>
         );
     }

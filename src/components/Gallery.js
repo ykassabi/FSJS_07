@@ -3,8 +3,6 @@ import GalleryItem from './GalleryItem';
 import NoMatch from './NoMatch';
 
 const Gallery = ({photos, query}) => {
-    // let name = match.params.name;
-    // console.log(name)
    
     const photoslist = photos.map((item, index) => {
         return <GalleryItem 
@@ -14,8 +12,10 @@ const Gallery = ({photos, query}) => {
         />
     })
    
+
+
     return ( 
-    <div className="photo-container">
+        <div className="photo-container">
       <h2>{query}'s Photos</h2>
       <ul>
           { photoslist.length ? photoslist : <NoMatch /> }
