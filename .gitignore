@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# keep secret config file
+./src/config.js
+./src/config1.js
+./src/config2.js
