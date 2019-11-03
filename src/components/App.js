@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {config} from '../config';
+import {config} from '../config1';
 
 import Nav from './Nav';
 import SearchBar from './SearchBar';
@@ -68,7 +68,7 @@ class App extends Component {
             : <Gallery photos={this.state.photos} query={this.state.queryText} /> } />   
 
 
-            <Route path='/fav/happy' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
+            <Route path='/fav/hope' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
             <Route path='/fav/fly' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
             <Route path='/fav/smile' render={()=><Gallery photos={this.state.photos} query={this.state.queryText} />}/>
             <Route component={NotFound}/>
