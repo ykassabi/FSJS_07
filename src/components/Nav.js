@@ -6,7 +6,7 @@ const Nav = ({searchPhotos}) => {
     return ( 
       <nav className="main-nav">
         <ul>
-          <li onClick={ () => searchPhotos("hope")}><NavLink to='/fav/hope'>Hope</NavLink></li>
+          <li onClick={ () => searchPhotos("babies")}><NavLink to='/fav/babies'>Babies</NavLink></li>
           <li onClick={ () => searchPhotos("fly")}><NavLink to='/fav/fly' >Fly</NavLink></li>
           <li onClick={ () => searchPhotos("smile")}><NavLink to='/fav/smile' >Smile</NavLink></li>
           

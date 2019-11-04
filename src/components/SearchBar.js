@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Search extends Component{
     constructor(props){
@@ -14,13 +15,11 @@ class Search extends Component{
         e.preventDefault()
         this.props.searchPhotos(this.state.value);
         this.props.loadingProcess();
-        //VVVVVVVVVVVVVVVVVVVVVVVV
-        // this is suppose to update the url with the input value,(1)
-        // let newquery = this.q.value
-        // let path = `/${newquery}`;
-        // this.props.history.push(path); // this a bug Error
+        //sinking the query with URL
+        let newquery = this.state.value
+        let path = `/${newquery}`;
+        this.props.history.push(path); 
         e.currentTarget.reset();
-        //AAAAAAAAAAAAAAAAAAAAAAAAA
     }
 
 
@@ -28,10 +27,9 @@ class Search extends Component{
 
         return ( 
             <form className="search-form" onSubmit={this.handleSubmit}>
-                <input type="search" name="search" placeholder={'Search'} required 
+                <input type="search" name="search" placeholder={this.state.value} required 
                     value={this.state.value}
                     onChange={this.handleChange}
-                    // ref ={ (input) => this.q = input}//this is supose to update the url with the input value, (2)
                  />
                 
                 <button type="submit" className="search-button">
@@ -48,4 +46,4 @@ class Search extends Component{
     }
 }
 
-export default Search;
+export default withRouter(Search);
