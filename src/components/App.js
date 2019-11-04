@@ -47,12 +47,22 @@ class App extends Component {
     this.setState({loading:true})
   }
 
+
+  componentDidMount() { 
+
+    let path = window.location.pathname 
     
-  // generating the gallery on the first load up // with the default value of query: Joy
-  componentDidMount(){
     this.fetchingData(this.state.queryText);
-  
-}
+    
+    if(path === '/'){
+       return this.fetchingData('joy') 
+      }else{ 
+        console.log('full path',path)
+        console.log('slice 8',path.slice(8))
+        console.log(path.slice(2))
+        return this.fetchingData(path.slice(8)) 
+      }
+    }
 
   
   render(){
